@@ -1,1 +1,58 @@
-import SectionTitle from "./SectionTitle";const testimonials=[{quote:"NMBK understood our requirements clearly and translated them into a clean, practical digital solution.",name:"Startup client",role:"Website project"},{quote:"The communication was simple, transparent and focused on solving the actual business problem.",name:"Business owner",role:"Technical consulting"},{quote:"The application structure was easy to maintain and ready for future growth.",name:"Product team",role:"Software development"}];export default function Testimonials(){return <section className="bg-gradient-to-br from-blue-100 via-cyan-50 to-indigo-100 px-5 py-24"><div className="mx-auto max-w-7xl"><SectionTitle eyebrow="Client experience" title="Built around clarity, trust and practical results."/><div className="mt-14 grid gap-6 lg:grid-cols-3">{testimonials.map(item=><figure key={item.role} className="rounded-[2rem] bg-white p-7 shadow-xl"><div className="text-3xl text-blue-400">❝</div><div className="mt-5 text-amber-400">★★★★★</div><blockquote className="mt-5 text-lg font-semibold leading-8 text-slate-950">“{item.quote}”</blockquote><figcaption className="mt-7 border-t border-blue-100 pt-5"><strong className="block text-slate-950">{item.name}</strong><span className="text-sm text-slate-500">{item.role}</span></figcaption></figure>)}</div></div></section>}
+import { Sparkles, Users, Heart } from "lucide-react";
+import SectionTitle from "./SectionTitle";
+
+const highlights = [
+  {
+    icon: Sparkles,
+    title: "Creative solutions",
+    description:
+      "We combine technology and creativity to build clear, useful and engaging digital experiences.",
+  },
+  {
+    icon: Users,
+    title: "People first",
+    description:
+      "We focus on understanding real needs and creating solutions that are practical and easy to use.",
+  },
+  {
+    icon: Heart,
+    title: "Meaningful work",
+    description:
+      "We bring technology, creativity and people together to create work with purpose.",
+  },
+];
+
+export default function Testimonials() {
+  return (
+    <section className="bg-gradient-to-br from-blue-100 via-cyan-50 to-indigo-100 px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <SectionTitle
+          eyebrow="Our approach"
+          title="Built around clarity, creativity and purpose."
+          description="We create digital solutions with a focus on people, technology and meaningful results."
+        />
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {highlights.map(({ icon: Icon, title, description }) => (
+            <article
+              key={title}
+              className="rounded-[2rem] bg-white p-7 shadow-xl"
+            >
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-blue-100 text-blue-700">
+                <Icon size={28} />
+              </div>
+
+              <h3 className="mt-6 text-2xl font-black text-slate-950">
+                {title}
+              </h3>
+
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                {description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
