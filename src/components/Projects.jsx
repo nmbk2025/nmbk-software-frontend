@@ -1,1 +1,87 @@
-import SectionTitle from "./SectionTitle";const projects=[{icon:"🌐",title:"Business Website",type:"Responsive web development",className:"md:col-span-2",bg:"from-indigo-600 via-blue-600 to-cyan-500"},{icon:"🤖",title:"AI Assistant",type:"AI and automation",className:"",bg:"from-violet-600 to-fuchsia-500"},{icon:"📱",title:"Mobile Application",type:"Cross-platform app",className:"",bg:"from-cyan-500 to-blue-600"},{icon:"☁️",title:"Cloud Platform",type:"Backend and deployment",className:"md:col-span-2",bg:"from-blue-600 via-indigo-600 to-violet-700"}];export default function Projects(){return <section id="projects" className="px-5 py-24"><div className="mx-auto max-w-7xl"><SectionTitle eyebrow="Our projects" title="Software solutions designed for modern organisations." description="Replace these panels later with screenshots and details from your real client or internal projects."/><div className="mt-14 grid gap-6 md:grid-cols-3">{projects.map(({icon,title,type,className,bg})=><article key={title} className={`group relative min-h-[310px] overflow-hidden rounded-[2rem] bg-gradient-to-br ${bg} p-8 text-white shadow-xl ${className}`}><div className="absolute inset-0 opacity-25 grid-pattern"/><div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border-[35px] border-white/15 transition duration-500 group-hover:scale-110"/><div className="relative flex h-full flex-col justify-between"><span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/18 text-2xl backdrop-blur">{icon}</span><div><p className="text-sm font-bold uppercase tracking-[0.2em] text-white/70">{type}</p><h3 className="mt-2 text-3xl font-black">{title}</h3></div></div></article>)}</div></div></section>}
+import { ExternalLink, Brain, ShieldCheck, MapPinned } from "lucide-react";
+import SectionTitle from "./SectionTitle";
+
+const projects = [
+  {
+    icon: Brain,
+    title: "FluentAI",
+    category: "Speech Therapy",
+    description:
+      "An AI-powered speech therapy platform designed to support patients and therapists with digital therapy tools and progress tracking.",
+    url: "https://speechtherapy.nmbk.in",
+    gradient: "from-indigo-600 via-violet-600 to-fuchsia-500",
+  },
+  {
+    icon: ShieldCheck,
+    title: "AidAssist",
+    category: "AI & Accessibility",
+    description:
+      "An AI-powered assistant designed to provide helpful guidance and support for hearing aid users.",
+    url: "https://aidassist-11.onrender.com",
+    gradient: "from-cyan-500 via-blue-500 to-indigo-600",
+  },
+  {
+    icon: MapPinned,
+    title: "Travel Buddy",
+    category: "Travel Platform",
+    description:
+      "A travel-focused platform designed to help users connect, explore and plan better travel experiences.",
+    url: "https://travel-buddy-5-u3in.onrender.com",
+    gradient: "from-rose-500 via-orange-500 to-amber-400",
+  },
+];
+
+export default function Projects() {
+  return (
+    <section id="projects" className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <SectionTitle
+          eyebrow="Our projects"
+          title="Solutions we've built."
+          description="Explore some of the digital solutions developed by NMBK."
+        />
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {projects.map(
+            ({ icon: Icon, title, category, description, url, gradient }) => (
+              <article
+                key={title}
+                className={`group relative overflow-hidden rounded-[2rem] bg-gradient-to-br ${gradient} p-8 text-white shadow-xl`}
+              >
+                <div className="absolute inset-0 grid-pattern opacity-20" />
+
+                <div className="relative flex min-h-[360px] flex-col">
+                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/20">
+                    <Icon size={27} />
+                  </span>
+
+                  <div className="mt-auto">
+                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/70">
+                      {category}
+                    </p>
+
+                    <h3 className="mt-2 text-3xl font-black">{title}</h3>
+
+                    <p className="mt-4 leading-7 text-white/85">
+                      {description}
+                    </p>
+
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-900 transition hover:bg-white/90"
+                    >
+                      Visit project
+                      <ExternalLink size={16} />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            )
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
